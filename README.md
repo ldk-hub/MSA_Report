@@ -1,5 +1,7 @@
 # MSA_project
 
+[![HitCount](https://img.shields.io/badge/lisence-MIT-green.svg)](https://github.com/ldk-hub/MSA_project/blob/master/LICENSE)
+
 프로젝트 목적 MSA의 기능 구현 및 샘플케이스 구성
 
 ![22](https://user-images.githubusercontent.com/12209348/75217751-47116c80-57db-11ea-9b8d-69af722f8dbf.PNG)
