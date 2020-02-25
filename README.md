@@ -1,5 +1,5 @@
 # MSA_project
-
+[![HitCount](http://hits.dwyl.com/ldk-hub/MSA_project.svg)](http://hits.dwyl.com/ldk-hub/MSA_project)
 [![HitCount](https://img.shields.io/badge/lisence-MIT-green.svg)](https://github.com/ldk-hub/MSA_project/blob/master/LICENSE)
 
 프로젝트 목적 MSA의 기능 구현 및 샘플케이스 구성
