@@ -25,8 +25,13 @@ chapter 2. - 서비스 부하분산 테스트
 
 chapter 3. - 서킷브레이커 테스트
 
+
+
 ## 개발 환경
  - 스프링부트
  - hikariCP
  - Jquery, ajax, 
  - postgresqlDB, OracleDB
+
+
+코로나 
