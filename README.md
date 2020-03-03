@@ -32,6 +32,3 @@ chapter 3. - 서킷브레이커 테스트
  - hikariCP
  - Jquery, ajax, 
  - postgresqlDB, OracleDB
-
-
-코로나 
