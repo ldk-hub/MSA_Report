@@ -25,15 +25,21 @@
 
 ## 계획
 chapter 1. - 서비스별 분산구조 구성 테스트 
-
+       유레카 서버에 로그인, 회원가입, 메인화면 구성
+       유레카 클라이언트에서는 통계대시보드, 차트 통계,캘린더 페이지 구성
 chapter 2. - 서비스 부하분산 테스트
-
+         
 chapter 3. - 서킷브레이커 테스트
 
 
 
 ## 개발 환경
- - 스프링부트
+ - java, jsp , springboot
  - hikariCP
- - Jquery, ajax, 
+ - Jquery, ajax, jpa
  - postgresqlDB, OracleDB
+ 
+ 
+ 
+ ## 진행이슈
+  - 노트북의 메모리와 CPU가 2개의 db구동과 여러개의 서비스 실행과정에서 OOM이 발생 해당 테스트 환경 대응방안 모색 
