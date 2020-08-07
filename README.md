@@ -38,14 +38,10 @@ Saas 구조 - 12 팩터 앱 자세한 내용 : https://12factor.net/ko/
    - HYSTRIX :서킷브레이커 라이브러리를 제공(시스템 장애생기면 연쇄작용으로 무너지지않게 차단기역할)
    - RIBBON : 로드밸런싱 기능
    - EUREKA : 유레카 서버에서 유레카 클라이언트 대상으로 중앙 관리를 할 수 있는 구조
-  
-[![HitCount](http://hits.dwyl.com/ldk-hub/MSA_project.svg)](http://hits.dwyl.com/ldk-hub/MSA_project)
-[![HitCount](https://img.shields.io/badge/lisence-MIT-green.svg)](https://github.com/ldk-hub/MSA_project/blob/master/LICENSE)
+ 
 
-프로젝트 목적 MSA의 기능 구현 및 샘플케이스 구성  
-![22](https://user-images.githubusercontent.com/12209348/75217751-47116c80-57db-11ea-9b8d-69af722f8dbf.PNG)
-
-MSA 사용목적 대규모 트래픽 몰리는 서비스 경우  
+## MSA 사용목적  
+대규모 트래픽 몰리는 서비스 경우  
 하나의 시스템에서 트래픽이몰리거나 유입이 많은 서비스를 분산시켜 장애 대응 및 세부 관리를 할수있음.  
  - 기존의 모놀리틱 -> MSA 전환   
 
