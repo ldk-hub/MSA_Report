@@ -15,7 +15,23 @@ Saas 구조 - 12 팩터 앱 자세한 내용 : https://12factor.net/ko/
  - 모노리틱 : 하나의 서버에 모든 시스템 구성을 사용.
  - 마이크로서비스아키텍처 : 서비스는 중앙관리 서버에서 그외 서비스별로 vm 구성을 쪼개어 사용하여 관리하는 구조 
  
- * 리본 (부하분산 처리) 
+    * eureka 
+     바야흐로 클라우드 시대, 서버는 실제 서버 컴퓨터에서 돌아가지않고 아마존과 같은 호스팅 업체가 관리하는 클라우드 서버에서 실행된다.  
+     서버 IP는 유동적으로 변경되고 서버 관리자는 이에 대한 조치를 일일이 하기 힘듬으로 동적으로 이동하는 서버(eureka client)를 관리하는 서버(eureka server)를 구성하여 조치한다.  
+     이렇게 실제 클라이언트의 요청을 처리하는 서버(eureka client)들 사이에서 Middle-tier(중간다리) 역할을 하는것이 eureka server이다.  
+     eureka client 관리뿐 아니라 로드 밸런싱이나 장애 복구 기능까지 제공한다.  
+
+     eureka_discovery  
+     eureka 용어  
+     Service Registry: 서비스(eureka client)가 자기 자신의 정보를 Eureka Server에 등록하는 행동   
+     Service Discovery: 클라이언트가 요청을 보내면 Service Registry 되어있는 서비스 들을 Eureka Server에서 발견하는 과정  
+     Eureka 구성 요소 관련  
+     Eureka Server: Eureka Client들을 관리(등록, 제어, 삭제, 제공) 하는 서버  
+     Eureka Client: Service Registry 하여 서비스에 대한 비지니스 로직을 처리하는 클라이언트, 다른 Eureka Client 들과 연동하여 비지니스 로직을 처리한다.  
+     Eureka Service: Eureka Server에 등록된 서비스를 가리킴, Eureka Client가 제공하는 서비스로 하나의 서비스의 원활한 수행을 위해 동시에 같은 서비스를 지원하는 여러개의 Eureka Client 가 동작할 수 있다.  
+     Eureka Instance: Eureka에 등록되어 목록에서 조회 가능한 Eureka Service를 의미  
+
+  * 리본 (부하분산 처리) 
    - 클라이언트 로드밸런서
    - 기본 라운드로빈(RR) 방식의 부하분산 처리가능 
    - 스프링클라우드로 부터 서버목록을 전달받아 사용가능
