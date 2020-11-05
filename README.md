@@ -94,3 +94,117 @@ chapter 3. - 서킷브레이커 테스트
    - 두개의 DBMS로 분할 postgresql, oracle DB 
    - 유입이 많을 것같은 서비스를 별도의 서비스로 분할하여 
    - 모노리틱으로 구성된 프로젝트를 MSA로 구성하는 방향으로 컨셉을 잡아 설계
+   
+### 프로젝트 History  
+ 기존의 진행했던 프로젝트 경우 대부분 메이븐 환경과 기존 레거시 환경을 따라가는 방향으로 개발하였으나 최근 다양한 방법으로 개발환경을 사용함으로 스펙트럼을 넓혀가고 있다.  
+ 그중  히카리CP와 그레이들 ORM기반 JPA hibernate MSA 역시 이와 같은 맥락이다.  
+ 그래서 이와 같은 내용을 정리하고 실습을 통해 직접 프로젝트를 구성해볼 것이다.   
+   
+## HikariCp란?
+
+정의 : DataBase와의 커넥션풀 관리해줌. 이전 프로젝트에서 굉장히 유용하게 사용하였음. 무중단서비스
+HikariCP는 미리정해놓은 만큼의 커넥션은 Pool에 담아놓고 요청이있을시 Thread가 커넥션을 요청하고 Hikari는 Pool내에 있는 커넥션을 연결해줌.
+
+
+## 그레이들(Gradle)란?
+현재로서는 분명히 maven의 점유율이 더 높고 더 익숙하신 분들이 많은 상황이지만
+gradle 의 추격이 더 빨라지고 있어서 조만간 상황이 역전될 가능성이 더 높다고 하는 사람들이 많아지고 있으며
+그래들이 조금더 빠른 성능과 간결한 설정의 매력을 보유하고 있어 인기도가 상승중이라고 합니다.
+소규모의 프로젝트에서는 큰 차이가 없어서 익숙한 maven 을 사용해도 무방할지라도
+규모가 커질수록 gradle 을 사용하는 것이 체감상 더욱 유리하다고 합니다.
+
+빠른 성능과 간결한 설정을 들 수 있다. https://gradle.org/maven-vs-gradle/ 참고.
+아무래도 maven 의 단점을 보완한 최신 툴이고, 계속해서 많은 버전 업그레이드를 진행하고 있어 그 격차가 계속 벌어지고 있는 듯 하다.
+동일한 역할을 하는 툴이므로 maven 에 익숙한 분들은 굳이 약간의 성능을 느끼기 위해 gradle 로 갈아타려 하지 않을 수도 있다.
+빌드만 잘되면 그 뿐이지만... gradle 의 엄청난 기능들과 확장성을 공부한다면 마음이 바뀔 수도 있을지 모른다.
+
+## 메이븐
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <groupId>com.example</groupId>
+   <artifactId>demo-maven</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
+   <packaging>jar</packaging>
+
+   <name>demo-maven</name>
+   <description>Demo project for Spring Boot</description>
+
+   <parent>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>1.5.4.RELEASE</version>
+      <relativePath/> <!-- lookup parent from repository -->
+   </parent>
+
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+      <java.version>1.8</java.version>
+   </properties>
+
+   <dependencies>
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter</artifactId>
+      </dependency>
+
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-test</artifactId>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
+
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+         </plugin>
+      </plugins>
+   </build>
+
+
+</project>
+
+```
+
+## 그레이들  
+```
+buildscript {
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+```
+
+## H2 란?
+
+
