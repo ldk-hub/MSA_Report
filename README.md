@@ -118,7 +118,7 @@ gradle 의 추격이 더 빨라지고 있어서 조만간 상황이 역전될 �
 동일한 역할을 하는 툴이므로 maven 에 익숙한 분들은 굳이 약간의 성능을 느끼기 위해 gradle 로 갈아타려 하지 않을 수도 있다.
 빌드만 잘되면 그 뿐이지만... gradle 의 엄청난 기능들과 확장성을 공부한다면 마음이 바뀔 수도 있을지 모른다.
 
-## 메이븐
+#### 메이븐 vs 그레이들 (메이븐)
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -173,7 +173,7 @@ gradle 의 추격이 더 빨라지고 있어서 조만간 상황이 역전될 �
 
 ```
 
-## 그레이들  
+##  메이븐 vs 그레이들 ()
 ```
 buildscript {
     ext {
