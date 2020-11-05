@@ -205,6 +205,11 @@ dependencies {
 }
 ```
 
+
+
+#### 메이븐 가이드 공식
+https://docs.gradle.org/current/dsl/org.gradle.api.Project.html
+
 ## H2 란?
 
 
